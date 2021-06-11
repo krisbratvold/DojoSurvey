@@ -1,0 +1,37 @@
+@model Post
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dojo Survey</title>
+    <link rel="stylesheet" href="~/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="form">
+            <form action="/process/post" method="POST">
+                Your Name:<input class="size" type="text" name="Name" />
+                Dojo Location:<select class="size" name="Location">
+                    <option value="San Jose">San Jose</option>
+                    <option value="Seattle">Seattle</option>
+                    <option value="Texas">Texas</option>
+                </select>
+                Favorite Language:<select class="size" name="Language">
+                    <option value="C#">C#</option>
+                    <option value="Python">Python</option>
+                    <option value="JavaScript">JavaScript</option>
+                </select>
+                Comment (optional):<textarea class="size" name="Comment" cols="10" rows="5"></textarea>
+                <button class="size" type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>
