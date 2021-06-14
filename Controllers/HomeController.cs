@@ -13,9 +13,35 @@ namespace DojoSurvey.Controllers
         }
 
         [HttpPost("/process/post")]
-        public ViewResult ProcessPost(Post newPost)
+        public IActionResult ProcessPost(Post newPost)
         {
-            return View("Result", newPost);
+            if (ModelState.IsValid)
+            {
+                // do somethng!  maybe insert into db?  then we will redirect
+                return RedirectToAction("Result", new{
+                    name = newPost.Name,
+                    location = newPost.Location,
+                    language = newPost.Language,
+                    comment = newPost.Comment
+                });
+            }
+            else
+            {
+                // Oh no!  We need to return a ViewResponse to preserve the ModelState, and the errors it now contains!
+                return View("Index");
+            }
+        }
+        [HttpGet("/result")]
+        public IActionResult Result(string name, string location, string language, string comment)
+        {
+            Post result = new Post()
+            {
+                Name=name,
+                Location = location,
+                Language = language,
+                Comment = comment
+            };
+            return View("Result", result);
         }
     }
 }

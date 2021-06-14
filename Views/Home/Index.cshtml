@@ -14,19 +14,26 @@
 <body>
     <div class="container">
         <div class="form">
-            <form action="/process/post" method="POST">
-                Your Name:<input class="size" type="text" name="Name" />
-                Dojo Location:<select class="size" name="Location">
+            <form asp-action="ProcessPost" asp-controller="Home" method="POST">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="size"/>
+                <span asp-validation-for="Name"></span>
+                <label asp-for="Location"></label>
+                <select asp-for="Location" class="size">
                     <option value="San Jose">San Jose</option>
                     <option value="Seattle">Seattle</option>
                     <option value="Texas">Texas</option>
                 </select>
-                Favorite Language:<select class="size" name="Language">
+                <span asp-validation-for="Location"></span>
+                <label asp-for="Language"></label>
+                <select asp-for="Language" class="size">
                     <option value="C#">C#</option>
                     <option value="Python">Python</option>
                     <option value="JavaScript">JavaScript</option>
                 </select>
-                Comment (optional):<textarea class="size" name="Comment" cols="10" rows="5"></textarea>
+                <span asp-validation-for="Location"></span>
+                <label asp-for="Comment"></label>
+                <textarea class="size" name="Comment" cols="10" rows="5"></textarea>
                 <button class="size" type="submit">Submit</button>
             </form>
         </div>
